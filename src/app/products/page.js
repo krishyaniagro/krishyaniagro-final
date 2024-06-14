@@ -1,0 +1,75 @@
+// import Link from 'next/link';
+
+// const products = [
+//   { id: 1, name: 'Organic Apples', price: '$2.50/kg', image: '/apple.jpg', description: 'Fresh organic apples.' },
+//   { id: 2, name: 'Fresh Carrots', price: '$1.20/kg', image: '/carrot.jpg', description: 'Crunchy fresh carrots.' },
+// ];
+
+// export default function Products() {
+//   return (
+//     <main className="container mx-auto p-4">
+//       <h1 className="text-4xl font-bold mb-8 text-center">All Products</h1>
+//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+//         {products.map(product => (
+//           <Link key={product.id} href={`/products/${product.id}`}>
+//             <div className="border p-4 rounded-lg shadow-lg cursor-pointer">
+//               <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-t-lg" />
+//               <h2 className="text-xl font-semibold mt-4">{product.name}</h2>
+//               <p className="text-gray-700 mt-2">{product.price}</p>
+//               <button className="bg-green-500 text-white mt-4 p-2 rounded">View Details</button>
+//             </div>
+//           </Link>
+//         ))}
+//       </div>
+//     </main>
+//   );
+// }
+"use client"
+import Link from 'next/link';
+import { useLanguage } from '../languagecontext';
+
+const Products = () => {
+    const { language } = useLanguage();
+
+    const translations = {
+        en: {
+            title: 'All Products',
+            viewDetails: 'View Details',
+        },
+        mr: {
+            title: 'सर्व उत्पादने',
+            viewDetails: 'विवरण पहा',
+        },
+        hi: {
+            title: 'सभी उत्पाद',
+            viewDetails: 'विवरण देखें',
+        },
+    };
+
+    const products = [
+      { id: 1, name: { en: 'Organic Apples', mr: 'स्वास्थ्यवर्धक सेब', hi: 'जैविक सेब' }, price: '$2.50/kg', image: '/apple.jpg', description: { en: 'Fresh organic apples.', mr: 'नवीन जैविक सेब.', hi: 'ताजा जैविक सेब.' } },
+      { id: 2, name: { en: 'Fresh Carrots', mr: 'ताजी गाजर', hi: 'ताज़ा गाजर' }, price: '$1.20/kg', image: '/carrot.jpg', description: { en: 'Crunchy fresh carrots.', mr: 'ओलंड ताजी गाजर.', hi: 'क्रंची ताजा गाजर.' } },
+      // Add more products as needed
+  ];
+
+    return (
+      <main className="container mx-auto p-4">
+      <h1 className="text-4xl font-bold mb-8 text-center">{translations[language].title}</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map(product => (
+              <Link key={product.id} href={`/products/${product.id}`}>
+                  <div className="border p-4 rounded-lg shadow-lg cursor-pointer">
+                      <img src={product.image} alt={product.name[language]} className="w-full h-48 object-cover rounded-t-lg" />
+                      <h2 className="text-xl font-semibold mt-4">{product.name[language]}</h2>
+                      <p className="text-gray-700 mt-2">{product.price}</p>
+                      <p className="text-gray-600 mt-2">{product.description[language]}</p>
+                      <button className="bg-green-500 text-white mt-4 p-2 rounded">{translations[language].viewDetails}</button>
+                  </div>
+              </Link>
+          ))}
+      </div>
+  </main>
+    );
+};
+
+export default Products;
