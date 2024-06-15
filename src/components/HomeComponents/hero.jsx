@@ -1,4 +1,4 @@
-"use client" 
+"use client"
 import React, { useRef, useEffect, useState } from "react";
 import { useLanguage } from "@/app/languagecontext";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -75,51 +75,37 @@ const Hero = () => {
         },
     };
 
-    // Ref for the hero section and slogans
     const heroRef = useRef(null);
-    const slogansRef = useRef(null);
-
-    // State to track current slogan index
     const [currentSloganIndex, setCurrentSloganIndex] = useState(0);
-
-    // Array of images to cycle through
     const images = [
-        "/images/home/hero1.jpg",
-        "/images/home/hero2.jpg",
-        "/images/home/hero3.jpg",
         "/images/home/hero4.jpg",
+        "/images/home/hero5.jpg",
+        "/images/home/hero6.jpg",
+        "/images/home/hero7.jpg",
     ];
 
-    // Index to track current image
-    let currentIndex = 0;
-
-    // Function to cycle through images
-    const cycleImages = () => {
-        if (heroRef.current) {
-            heroRef.current.style.backgroundImage = `url(${images[currentIndex]})`;
-            currentIndex = (currentIndex + 1) % images.length;
-            // Update current slogan index
-            setCurrentSloganIndex(currentIndex);
-        }
-    };
-
-    // Automatically cycle through images on mount
+    // Preload images
     useEffect(() => {
-        const interval = setInterval(cycleImages, 5000); // Change image every 5 seconds
+        images.forEach((image) => {
+            const img = new Image();
+            img.src = image;
+        });
+    }, [images]);
+
+    useEffect(() => {
+        const cycleImages = () => {
+            setCurrentSloganIndex((prevIndex) => (prevIndex + 1) % images.length);
+        };
+        const interval = setInterval(cycleImages, 5000);
         return () => clearInterval(interval);
     }, []);
 
-    // Function to handle next and previous button clicks
     const handleNext = () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        setCurrentSloganIndex(currentIndex);
-        heroRef.current.style.backgroundImage = `url(${images[currentIndex]})`;
+        setCurrentSloganIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
 
     const handlePrev = () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        setCurrentSloganIndex(currentIndex);
-        heroRef.current.style.backgroundImage = `url(${images[currentIndex]})`;
+        setCurrentSloganIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     };
 
     return (
@@ -127,9 +113,10 @@ const Hero = () => {
             ref={heroRef}
             className="relative overflow-hidden pt-16 top-12 h-screen flex items-center justify-center"
             style={{
-                backgroundImage: `url(${images[currentIndex]})`,
+                backgroundImage: `url(${images[currentSloganIndex]})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                transition: "background-image 1s ease-in-out",
             }}
         >
             <div className="absolute inset-0 bg-gradient-to-l from-[#EAF7BA] to-transparent opacity-75"></div>
@@ -137,10 +124,7 @@ const Hero = () => {
                 <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">
                     {translations[language].slogans[currentSloganIndex].heading}
                 </h1>
-                <p
-                    ref={slogansRef}
-                    className="text-2xl md:text-2xl mb-8 animate-fade-in-up max-w-xl"
-                >
+                <p className="text-2xl md:text-2xl mb-8 animate-fade-in-up max-w-xl">
                     {translations[language].slogans[currentSloganIndex].subheading}
                 </p>
                 <div className="flex space-x-8 pt-8 animate-fade-in">
@@ -169,4 +153,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
