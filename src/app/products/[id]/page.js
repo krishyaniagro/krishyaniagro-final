@@ -45,6 +45,7 @@ const Product = ({ params }) => {
       window.open(whatsappUrl, '_blank');
     } else {
       alert('Please provide your username, address, and phone number before purchasing.');
+      router.push('/auth/login')
     }
   };
 

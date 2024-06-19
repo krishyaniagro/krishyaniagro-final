@@ -104,7 +104,7 @@ const Navbar = () => {
                         <img
                             src="/images/website_logobg.png"
                             alt="Logo"
-                            className="h-12 w-12 w-auto"
+                            className="h-8 w-auto"
                         />
                     </a>
                 </h1>
