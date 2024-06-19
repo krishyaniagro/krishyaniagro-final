@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useLanguage } from "@/app/languagecontext";
+import { useGlobalState } from "./GlobalState";
 
 const translations = {
     en: {
@@ -11,6 +12,7 @@ const translations = {
         products: "Products",
         contact: "Contact",
         login: "Login",
+        logout: "Logout",
         Insecticides: "Insecticides",
         fungicide: "Fungicide",
         PlantGrowthRegulators: "Plant Growth Regulators",
@@ -23,6 +25,7 @@ const translations = {
         products: "उत्पादने",
         contact: "संपर्क",
         login: "लॉगिन",
+        logout: "लॉगआउट",
         Insecticides: "कीटकनाशके",
         fungicide: "कवकनाशके",
         PlantGrowthRegulators: "वनस्पती वाढ नियामक",
@@ -35,6 +38,7 @@ const translations = {
         products: "उत्पाद",
         contact: "संपर्क करें",
         login: "लॉगिन",
+        logout: "लॉगआउट",
         Insecticides: "कीटनाशक",
         fungicide: "फफूंदनाशक",
         PlantGrowthRegulators: "पौधों की वृद्धि नियामक",
@@ -43,22 +47,24 @@ const translations = {
     },
 };
 
-
 const Navbar = () => {
     const [nav, setNav] = useState(false);
     const [hoveredLink, setHoveredLink] = useState(null);
     const { language, setLanguage } = useLanguage();
+    const { isLoggedIn, setIsLoggedIn } = useGlobalState();
 
     const links = [
         { id: 1, key: "home", url: "/" },
         { id: 2, key: "about", url: "/about" },
-        { id: 3, key: "products", url: "/products", sublinks: [
-            { id: 31, key: "Insecticides", url: "/products/Insecticides" },
-            { id: 32, key: "fungicide", url: "/products/fungicide" },
-            { id: 33, key: "PlantGrowthRegulators", url: "/products/PlantGrowthRegulators" },
-            { id: 34, key: "Growthpromoters", url: "/products/Growthpromoters" },
-            { id: 35, key: "Hardware", url: "/products/hardware" },
-        ]},
+        {
+            id: 3, key: "products", url: "/products", sublinks: [
+                { id: 31, key: "Insecticides", url: "/products/Insecticides" },
+                { id: 32, key: "fungicide", url: "/products/fungicide" },
+                { id: 33, key: "PlantGrowthRegulators", url: "/products/PlantGrowthRegulators" },
+                { id: 34, key: "Growthpromoters", url: "/products/Growthpromoters" },
+                { id: 35, key: "Hardware", url: "/products/hardware" },
+            ]
+        },
         { id: 4, key: "contact", url: "/pages/contact" },
     ];
 
@@ -79,6 +85,12 @@ const Navbar = () => {
         setLanguage(e.target.value);
     };
 
+    const handleLogout = () => {
+        document.cookie = "user_phone_number=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        setIsLoggedIn(false);
+        alert("You have been logged out.");
+    };
+
     return (
         <div className="flex justify-between items-center w-full py-2 px-4 text-white fixed top-0 left-0 bg-[#044203] z-50">
             <div className="flex-shrink-0">
@@ -89,7 +101,11 @@ const Navbar = () => {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        Logo
+                        <img
+                            src="/images/website_logobg.png"
+                            alt="Logo"
+                            className="h-12 w-12 w-auto"
+                        />
                     </a>
                 </h1>
             </div>
@@ -124,9 +140,15 @@ const Navbar = () => {
                     <option value="mr">मराठी</option>
                     <option value="hi">हिंदी</option>
                 </select>
-                <Link href="/auth/login" className="text-white nav-links cursor-pointer capitalize font-medium text-white hover:scale-105 hover:text-white duration-200 link-underline">
-                    {translations[language].login}
-                </Link>
+                {isLoggedIn ? (
+                    <button onClick={handleLogout} className="text-white nav-links cursor-pointer capitalize font-medium text-white hover:scale-105 hover:text-white duration-200 link-underline">
+                        {translations[language].logout}
+                    </button>
+                ) : (
+                    <Link href="/auth/login" className="text-white nav-links cursor-pointer capitalize font-medium text-white hover:scale-105 hover:text-white duration-200 link-underline">
+                        {translations[language].login}
+                    </Link>
+                )}
             </div>
             <div
                 onClick={() => setNav(!nav)}
@@ -155,9 +177,15 @@ const Navbar = () => {
                         </li>
                     ))}
                     <li className="px-4 cursor-pointer capitalize py-2 text-2xl">
-                        <Link onClick={() => setNav(!nav)} href="/auth/login">
-                            {translations[language].login}
-                        </Link>
+                        {isLoggedIn ? (
+                            <button onClick={handleLogout} className="text-white">
+                                {translations[language].logout}
+                            </button>
+                        ) : (
+                            <Link onClick={() => setNav(!nav)} href="/auth/login">
+                                {translations[language].login}
+                            </Link>
+                        )}
                     </li>
                 </ul>
             )}

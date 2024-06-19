@@ -1,79 +1,219 @@
+// // Login.js
+// "use client";
+// import { useState, useEffect } from 'react';
+// import { useRouter } from 'next/navigation';
+// import PhoneEmailSignInButton from "@/components/PhoneEmailSignInButton";
+// import { useGlobalState } from '@/components/GlobalState';
+// import { useLanguage } from '@/app/languagecontext';
+
+// const Login = () => {
+//   const { isLoggedIn } = useGlobalState();
+//   const { language } = useLanguage();
+//   const router = useRouter();
+//   const [name, setName] = useState('');
+//   const [address, setAddress] = useState('');
+//   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+
+//   useEffect(() => {
+//     if (isLoggedIn) {
+//       alert("already logged in");
+//       router.push('/');
+//     }
+//   }, [isLoggedIn, router, language]);
+
+//   useEffect(() => {
+//     if (name && address) {
+//       setIsButtonEnabled(true);
+//     } else {
+//       setIsButtonEnabled(false);
+//     }
+//   }, [name, address]);
+
+//   const handleFormSubmit = (event) => {
+//     event.preventDefault();
+//     setName('');
+//     setAddress('');
+//   };
+
+//   if (isLoggedIn) {
+//     return null;
+//   }
+
+// const translations = {
+//   en: {
+//     loginTitle: "Log In",
+//     nameLabel: "Name",
+//     addressLabel: "Address",
+//     signInButton: "Sign In with Phone",
+//     alreadyLoggedIn: "You are already logged in!",
+//   },
+//   mr: {
+//     loginTitle: "लॉग इन",
+//     nameLabel: "नाव",
+//     addressLabel: "पत्ता",
+//     signInButton: "फोनसह साइन इन करा",
+//     alreadyLoggedIn: "आपण आधीच लॉग इन केले आहे!",
+//   },
+//   hi: {
+//     loginTitle: "लॉग इन करें",
+//     nameLabel: "नाम",
+//     addressLabel: "पता",
+//     signInButton: "फोन के साथ साइन इन करें",
+//     alreadyLoggedIn: "आप पहले से ही लॉग इन हैं!",
+//   },
+// };
+
+//   return (
+//     <div className="h-screen flex items-center justify-center bg-gray-100">
+//       <div className="p-8 bg-white shadow-lg rounded-lg w-full max-w-md">
+//         <h2 className="text-2xl font-semibold text-center text-gray-700 mb-6">{translations[language].loginTitle}</h2>
+//         <form onSubmit={handleFormSubmit} className="space-y-6">
+//           <div>
+//             <label className="block text-sm font-medium text-gray-700">{translations[language].nameLabel}</label>
+//             <input
+//               type="text"
+//               value={name}
+//               onChange={(e) => setName(e.target.value)}
+//               className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+//               required
+//             />
+//           </div>
+//           <div>
+//             <label className="block text-sm font-medium text-gray-700">{translations[language].addressLabel}</label>
+//             <input
+//               type="text"
+//               value={address}
+//               onChange={(e) => setAddress(e.target.value)}
+//               className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+//               required
+//             />
+//           </div>
+//           <div>
+//             {isButtonEnabled ? (
+//               <PhoneEmailSignInButton />
+//             ) : (
+//               <button
+//                 type="button"
+//                 className="w-full bg-gray-300 text-gray-500 py-3 px-4 rounded-md cursor-not-allowed"
+//                 disabled
+//               >
+//                 {translations[language].signInButton}
+//               </button>
+//             )}
+//           </div>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+
 "use client"
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import PhoneEmailSignInButton from "@/components/PhoneEmailSignInButton";
+import { useGlobalState } from '@/components/GlobalState';
 import { useLanguage } from '@/app/languagecontext';
+import Cookies from 'js-cookie';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const { language } = useLanguage(); 
+  const { isLoggedIn } = useGlobalState();
+  const { language } = useLanguage();
+  const router = useRouter();
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const result = await login(username, password);
-    if (!result.success) {
-      alert('Login failed: ' + result.message);
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push('/');
     }
+  }, [isLoggedIn, router, language]);
+
+  useEffect(() => {
+    if (name && address) {
+      setIsButtonEnabled(true);
+    } else {
+      setIsButtonEnabled(false);
+    }
+  }, [name, address]);
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    console.log("name for saving ==>",name)
+
+    Cookies.set('name', name, { expires: 7 });
+    Cookies.set('address', address, { expires: 7 });
+    setName('');
+    setAddress('');
+    router.push('/');
   };
 
   const translations = {
     en: {
-      loggedInMessage: 'You are already logged in.',
-      loginHeader: 'Login',
-      usernameLabel: 'Username:',
-      passwordLabel: 'Password:',
-      loginButton: 'Login',
+      loginTitle: "Log In",
+      nameLabel: "Name",
+      addressLabel: "Address",
+      signInButton: "Sign In with Phone",
+      alreadyLoggedIn: "You are already logged in!",
     },
     mr: {
-      loggedInMessage: 'तुम्ही आधीच लॉग इन आहात.',
-      loginHeader: 'लॉगिन',
-      usernameLabel: 'वापरकर्तानाव:',
-      passwordLabel: 'पासवर्ड:',
-      loginButton: 'लॉगिन',
+      loginTitle: "लॉग इन",
+      nameLabel: "नाव",
+      addressLabel: "पत्ता",
+      signInButton: "फोनसह साइन इन करा",
+      alreadyLoggedIn: "आपण आधीच लॉग इन केले आहे!",
     },
     hi: {
-      loggedInMessage: 'आप पहले से ही लॉग इन हैं।',
-      loginHeader: 'लॉगिन',
-      usernameLabel: 'उपयोगकर्ता नाम:',
-      passwordLabel: 'पासवर्ड:',
-      loginButton: 'लॉगिन',
+      loginTitle: "लॉग इन करें",
+      nameLabel: "नाम",
+      addressLabel: "पता",
+      signInButton: "फोन के साथ साइन इन करें",
+      alreadyLoggedIn: "आप पहले से ही लॉग इन हैं!",
     },
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-      <div className="bg-white p-8 rounded-lg p-10 border w-full max-w-sm">
-        <h1 className="text-2xl font-bold mb-6 text-center">{translations[language].loginHeader}</h1>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div className="form-group">
-            <label className="block mb-2 font-medium text-gray-700">
-              {translations[language].usernameLabel}
-              <input
-                type="text"
-                className="block w-full p-2 border border-gray-300 rounded mt-1"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </label>
+    <div className="h-screen flex items-center justify-center bg-gray-100">
+      <div className="p-8 bg-white shadow-lg rounded-lg w-full max-w-md">
+        <h2 className="text-2xl font-semibold text-center text-gray-700 mb-6">{translations[language].loginTitle}</h2>
+        <form onSubmit={handleFormSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">{translations[language].nameLabel}</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
           </div>
-          <div className="form-group">
-            <label className="block mb-2 font-medium text-gray-700">
-              {translations[language].passwordLabel}
-              <input
-                type="password"
-                className="block w-full p-2 border border-gray-300 rounded mt-1"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </label>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">{translations[language].addressLabel}</label>
+            <input
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              required
+            />
           </div>
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-[#044203] text-white rounded hover:bg-[#044203] transition duration-200"
-          >
-            {translations[language].loginButton}
-          </button>
+          <div>
+            {isButtonEnabled ? (
+              <PhoneEmailSignInButton name={name} address={address}/>
+            ) : (
+              <button
+                type="button"
+                className="w-full bg-gray-300 text-gray-500 py-3 px-4 rounded-md cursor-not-allowed"
+                disabled
+              >
+                {translations[language].signInButton}
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>
@@ -81,4 +221,3 @@ const Login = () => {
 };
 
 export default Login;
-

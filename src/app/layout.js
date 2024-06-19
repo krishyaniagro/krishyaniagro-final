@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import { LanguageProvider } from "./languagecontext";
 import Footer from "@/components/footer";
+import { GlobalStateProvider } from "@/components/GlobalState";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <GlobalStateProvider>
         <LanguageProvider>
           <Header />
           <main>
@@ -22,6 +24,7 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
         </LanguageProvider>
+        </GlobalStateProvider>
       </body>
     </html>
   );
