@@ -13,8 +13,9 @@ const products = [
       mr: 'फुले, भाज्या, फळे आणि ऑषधी च्या सर्व प्रकारांसाठी उपयुक्त आहे.',
       hi: 'फूल, सब्जियां, फल और जड़ी-बूटियों सहित सभी प्रकार के पौधों के लिए आदर्श है।'
     },
-    price: '₹ 10.99',
-    MRP: '₹ 20.99',
+    Quantity: '1000 ML',
+    price: '₹ 650',
+    MRP: '₹ 998',
     image: '/images/krushi_f1.jpg',
     about: {
       en: `
@@ -29,7 +30,7 @@ const products = [
     },
     ratings: {
       average: '★ ★ ★ ★ ☆',
-      count: '(1,395 ratings)'
+      count: '(1,995 ratings)'
     }
   },
   {
@@ -40,23 +41,27 @@ const products = [
       mr: 'संपीटनक खत ज्यामध्ये पोषण सोडविण्यासाठी सुधारले जाते.',
       hi: 'पोषक अवशोषण में सुधार करने वाला चिपचिपा उर्वरक।'
     },
-    price: '₹ 8.50',
-    MRP: '₹ 15.99',
+    Quantity: '500 ML',
+    price: '₹ 230',
+    MRP: '₹ 450',
     image: '/images/krushi_f2.jpg',
     about: {
       en: `
-        Sticky Fertilizer enhances nutrient absorption in plants, resulting in healthier growth.
+        Sticky Fertilizer enhances nutrient absorption in plants, resulting in healthier growth.</br>
+        is a high-quality adhesive fertilizer designed to significantly improve nutrient absorption in plants. It ensures that essential nutrients are effectively delivered to the plant roots, promoting healthier and more robust growth.
       `,
       mr: `
-        स्टिकी खत रोगांची नियंत्रण करणारी, तज्ज्ञ संसाधनांच्या संग्रहाचे वापर करते.
+        स्टिकी खत रोगांची नियंत्रण करणारी, तज्ज्ञ संसाधनांच्या संग्रहाचे वापर करते.</br>
+        स्टिकी खत म्हणजे पोषण सोडविण्यासाठी अत्यंत उच्च-गुणवत्तेचे संपीटनक खत आहे. हे महत्वाचे पोषक तत्त्वे वनस्पतींच्या मुळांपर्यंत प्रभावीपणे पोहोचवते, ज्यामुळे आरोग्यदायी आणि अधिक मजबूत वाढ होण्यास मदत होते.
       `,
       hi: `
-        चिपचिपा उर्वरक पौधों में पोषक अवशोषण में सुधार करता है, जिससे उनकी स्वस्थ वृद्धि होती है।
+        चिपचिपा उर्वरक पौधों में पोषक अवशोषण में सुधार करता है, जिससे उनकी स्वस्थ वृद्धि होती है।</br>
+        चिपचिपा उर्वरक एक उच्च गुणवत्ता वाला चिपकने वाला उर्वरक है, जिसे पौधों में पोषक तत्वों के अवशोषण को काफी हद तक सुधारने के लिए डिजाइन किया गया है। यह सुनिश्चित करता है कि आवश्यक पोषक तत्व प्रभावी ढंग से पौधों की जड़ों तक पहुंचें, जिससे स्वस्थ और अधिक मजबूत वृद्धि को बढ़ावा मिलता है।
       `
     },
     ratings: {
       average: '★ ★ ★ ★ ☆',
-      count: '(1,200 ratings)'
+      count: '(1,700 ratings)'
     }
   },
   {
@@ -67,8 +72,9 @@ const products = [
       mr: 'प्रगत विकास सूत्रांसह क्रांतिकारी खत.',
       hi: 'उन्नत विकास सूत्रों वाला क्रांतिकारी उर्वरक।'
     },
-    price: '₹ 12.99',
-    MRP: '₹ 24.99',
+    Quantity: '1000 ML',
+    price: '₹ 1355',
+    MRP: '₹ 1100',
     image: '/images/krushi_f3.jpg',
     about: {
       en: `
@@ -89,14 +95,15 @@ const products = [
   {
     id: 4,
     name: { en: 'Quality Change Fertilizer', mr: 'क्वालिटी चेंज खत', hi: 'क्वालिटी बदलें उर्वरक' },
-    price: '₹ 9.99',
-    MRP: '₹ 18.99',
+    price: '₹ 1050',
+    MRP: '₹ 850',
     image: '/images/krushi_f4.jpg',
     usage: {
       en: 'Ideal for improving soil health and enhancing nutrient absorption.',
       mr: 'माटीचे आरोग्य सुधारण्यासाठी आणि पोषक अवशोषण सुधारण्यासाठी उपयुक्त.',
       hi: 'मृदा स्वास्थ्य में सुधार करने और पोषक अवशोषण को बढ़ाने के लिए आदर्श है।'
     },
+    Quantity: '1000 ML',
     about: {
       en: `
         Transformative fertilizer for improved soil health. Quality Change Fertilizer enhances the nutrient content of the soil, ensuring healthier growth of plants.
@@ -110,7 +117,7 @@ const products = [
     },
     ratings: {
       average: '★ ★ ★ ★ ☆',
-      count: '(1,200 ratings)' // Adjusted rating count based on the assumption
+      count: '(1,200 ratings)'
     }
   }
   
@@ -131,7 +138,7 @@ const Product = ({ params }) => {
     );
   }
 
-  const { name, price, image, usage, about ,MRP ,ratings} = product;
+  const { name, price, image, usage, about ,MRP ,ratings,Quantity} = product;
 
   const handleBuyNow = () => {
     const phoneNumber = '+918459574080';
@@ -176,14 +183,15 @@ const Product = ({ params }) => {
               <span className="text-yellow-500 mr-2">{ratings.average}</span>
               <span className="text-gray-600">{ratings.count}</span>
             </div>
-            <div className="text-xl font-bold text-green-500 mb-2">{price}</div>
-            <div className="text-sm text-gray-600 mb-4 line-through">M.R.P.: {MRP}</div>
+            <div className="text-xl font-bold text-green-500 mb-2">{Quantity}</div>
+            <div className="text-xl font-bold text-green-500 mb-2">Price : {price}</div>
+            <div className="text-sm text-gray-600 mb-4 line-through">M.R.P : {MRP}</div>
             <div className="mb-4">
               <h2 className="text-2xl font-bold mb-4">Features :</h2>
               <div dangerouslySetInnerHTML={{ __html: about[language] }} />
             </div>
             <div className="text-gray-600 mb-4">
-              <p>Fastest delivery Tomorrow, 23 June. Order within 18 hrs 4 mins.</p>
+              <p>Fastest delivery</p>
             </div>
             <div className="flex space-x-4">
               <button onClick={handleBuyNow} className="bg-yellow-500 text-white py-2 px-16 rounded hover:bg-yellow-600">Buy Product</button>
