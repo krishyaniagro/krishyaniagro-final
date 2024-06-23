@@ -141,7 +141,7 @@ const Product = ({ params }) => {
   const { name, price, image, usage, about ,MRP ,ratings,Quantity} = product;
 
   const handleBuyNow = () => {
-    const phoneNumber = '+918459574080';
+    const phoneNumber = '+919359213421';
     const productName = name[language];
     const productDescription = about[language];
 

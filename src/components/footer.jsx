@@ -48,7 +48,7 @@ export default function Footer() {
       copyright: "&copy; 2024 Krishyaniagro. सर्वाधिकार सुरक्षित।"
     }
   };
-  
+
 
   return (
     <footer className="bg-green-900 text-white py-8">
@@ -86,7 +86,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          
+
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
             <h3 className="text-lg font-semibold">{translations[language].followUs}</h3>
             <div className="mt-2 flex space-x-4">
@@ -110,10 +110,13 @@ export default function Footer() {
               {translations[language].email}: <a href="mailto:info@Krishyaniagro.com" className="hover:underline">info@Krishyaniagro.com</a>
             </p>
             <p className="mt-2">
-              {translations[language].phone}: <a href="tel:+123456789" className="hover:underline">+123 456 789</a>
+              {translations[language].phone}: <a href="tel:+123456789" className="hover:underline">9359213421</a>
             </p>
             <p className="mt-2">
-              {translations[language].address}: 123 Farmer Street, Agriculture City, Country
+              {translations[language].address}:Floor No.: Third Floor , SAI SANSKRUTI BAIF,Pune Nagar Road Wagheshwar Mandir
+             Wagholi
+            Pune
+            pincode 412207
             </p>
           </div>
         </div>
