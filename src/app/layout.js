@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import { LanguageProvider } from "./languagecontext";
 import Footer from "@/components/footer";
 import { GlobalStateProvider } from "@/components/GlobalState";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,15 +16,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/images/website_logobg.png" />
+      </Head>
       <body className={inter.className}>
         <GlobalStateProvider>
-        <LanguageProvider>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-        </LanguageProvider>
+          <LanguageProvider>
+            <Header />
+            <main>
+              {children}
+            </main>
+            <Footer />
+          </LanguageProvider>
         </GlobalStateProvider>
       </body>
     </html>

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useGlobalState } from './GlobalState';
 import { useRouter } from 'next/navigation';
 
-const PhoneEmailSignInButton = ({name,address}) => {
+const PhoneEmailSignInButton = () => {
   const { setIsLoggedIn } = useGlobalState();
   const { isLoggedIn } = useGlobalState();
   const router=useRouter()
@@ -40,8 +40,6 @@ const PhoneEmailSignInButton = ({name,address}) => {
       const data = await response.json();
       const userPhoneNumber = data.user_phone_number;
       setCookie('user_phone_number', userPhoneNumber, 7);
-      setCookie('username', name, 7);
-      setCookie('address', address, 7);
       setIsLoggedIn(true);
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -55,7 +53,7 @@ const PhoneEmailSignInButton = ({name,address}) => {
   return (
     <div 
       className="pe_signin_button" 
-      data-client-id="14196829677289531267"
+      data-client-id="16829379148930209863"
     ></div>
   );
 };

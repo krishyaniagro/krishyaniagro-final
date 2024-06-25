@@ -10,7 +10,7 @@ export default function Home() {
    <>
    <Hero />
    <Products />
-   {/* <BrandProducts />` */}
+   {/* <BrandProducts /> */}
    <FAQSection />
    <ContactPage />
    </>

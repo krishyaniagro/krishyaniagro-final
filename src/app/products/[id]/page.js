@@ -7,7 +7,7 @@ import Image from 'next/image';
 const products = [
   {
     id: 1,
-    name: { en: 'Real Power Fertilizer', mr: 'रियल पावर खत', hi: 'रियल पावर उर्वरक' },
+    name: { en: 'Real Power', mr: 'रियल पावर खत', hi: 'रियल पावर उर्वरक' },
     usage: {
       en: 'Ideal for all types of plants, including flowers, vegetables, fruits, and herbs.',
       mr: 'फुले, भाज्या, फळे आणि ऑषधी च्या सर्व प्रकारांसाठी उपयुक्त आहे.',
@@ -35,7 +35,7 @@ const products = [
   },
   {
     id: 2,
-    name: { en: 'Sticky Fertilizer', mr: 'स्टिकी खत', hi: 'चिपचिपा उर्वरक' },
+    name: { en: 'Sticky', mr: 'स्टिकी खत', hi: 'चिपचिपा उर्वरक' },
     usage: {
       en: 'Adhesive fertilizer that improves nutrient absorption.',
       mr: 'संपीटनक खत ज्यामध्ये पोषण सोडविण्यासाठी सुधारले जाते.',
@@ -66,7 +66,7 @@ const products = [
   },
   {
     id: 3,
-    name: { en: 'Kepler Fertilizer', mr: 'केपलर खत', hi: 'केपलर उर्वरक' },
+    name: { en: 'kelper', mr: 'केपलर खत', hi: 'केपलर उर्वरक' },
     usage: {
       en: 'Revolutionary fertilizer with advanced growth formulas.',
       mr: 'प्रगत विकास सूत्रांसह क्रांतिकारी खत.',
@@ -78,7 +78,7 @@ const products = [
     image: '/images/krushi_f3.jpg',
     about: {
       en: `
-        Kepler Fertilizer boosts plant growth significantly with its innovative formula.
+        kelper Fertilizer boosts plant growth significantly with its innovative formula.
       `,
       mr: `
         केपलर खत त्याच्या आविष्कारी सूत्राच्या सहकार्याने रोगांची वृद्धी वाढविते.
@@ -94,7 +94,7 @@ const products = [
   },
   {
     id: 4,
-    name: { en: 'Quality Change Fertilizer', mr: 'क्वालिटी चेंज खत', hi: 'क्वालिटी बदलें उर्वरक' },
+    name: { en: 'Quality Change ', mr: 'क्वालिटी चेंज खत', hi: 'क्वालिटी बदलें उर्वरक' },
     price: '₹ 1050',
     MRP: '₹ 850',
     image: '/images/krushi_f4.jpg',
@@ -145,24 +145,23 @@ const Product = ({ params }) => {
     const productName = name[language];
     const productDescription = about[language];
 
-    const username = Cookies.get('username');
-    const address = Cookies.get('address');
     const userPhoneNumber = Cookies.get('user_phone_number');
 
-    if (username && address && userPhoneNumber) {
-      const message = `My name is ${username}. I want to buy ${productName} (${price}). Please confirm my order. Product details: ${productName} - ${productDescription}. My address is ${address}.`;
-      const encodedMessage = encodeURIComponent(message);
+    if (userPhoneNumber) {
+      const msg=`My name is ${userPhoneNumber}. I want to buy${productName} ( ${price}). Please confirm my order`
+      // const message = `My name is ${username}. I want to buy ${productName} (${price}). Please confirm my order. Product details: ${productName} - ${productDescription}. My address is ${address}.`;
+      const encodedMessage = encodeURIComponent(msg);
       const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
       window.open(whatsappUrl, '_blank');
     } else {
-      alert('Please provide your username, address, and phone number before purchasing.');
+      alert('Please provide your  phone number before purchasing.');
       router.push('/auth/login');
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen pt-10">
+    <div className="flex justify-center items-center min-h-screen pt-[250px] lg:pt-[120px]">
       <div className="bg-white p-6 rounded-lg max-w-4xl w-full">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 p-4">
@@ -174,7 +173,7 @@ const Product = ({ params }) => {
               className="rounded-lg"
             />
           </div>
-          <div className="md:w-1/2 p-4">
+          <div className="md:w-1/2 p-4 ">
             <h2 className="text-2xl font-bold mb-4">🌿 {name[language]} 🌿</h2>
             <p className="text-gray-700 text-xl mb-4">
               {usage[language]}

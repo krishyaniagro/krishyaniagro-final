@@ -60,7 +60,7 @@ const AboutUs = () => {
     };
 
     return (
-        <main className="container mx-auto pt-20 p-20">
+        <main className="container mx-auto  p-20 pb-10 pt-[250px] lg:pt-[160px]">
             <h1 className="text-5xl font-bold mb-8 text-center text-green-700">{translations[language].title}</h1>
 
                 <div>
