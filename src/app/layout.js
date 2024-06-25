@@ -17,6 +17,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
+      <link
+  rel="icon"
+  href="/images/website_logobg.png"
+  type="image/"
+  sizes="<generated>"
+/>
         <link rel="icon" href="/images/website_logobg.png" />
       </Head>
       <body className={inter.className}>

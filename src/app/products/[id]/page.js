@@ -152,7 +152,6 @@ const Product = ({ params }) => {
       // const message = `My name is ${username}. I want to buy ${productName} (${price}). Please confirm my order. Product details: ${productName} - ${productDescription}. My address is ${address}.`;
       const encodedMessage = encodeURIComponent(msg);
       const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-
       window.open(whatsappUrl, '_blank');
     } else {
       alert('Please provide your  phone number before purchasing.');
