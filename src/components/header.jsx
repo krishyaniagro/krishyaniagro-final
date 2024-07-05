@@ -225,7 +225,7 @@ const Navbar = () => {
                 {nav && (
                     <ul className="flex flex-col py-10 items-start absolute top-0 left-0 w-full h-screen bg-[#07bc0c] text-white">
                         {links.map(({ id, key, url, sublinks }) => (
-                            <li key={id} className="px-4 cursor-pointer capitalize py-2 text-2xl">
+                            <li key={id} className="px-4 cursor-pointer capitalize py-2 text-xl">
                                 <Link onClick={() => setNav(!nav)} href={url}>
                                     {translations[language][key]}
                                 </Link>
@@ -242,7 +242,7 @@ const Navbar = () => {
                                 )}
                             </li>
                         ))}
-                        <li className="px-4 cursor-pointer capitalize py-2 text-2xl">
+                        <li className="px-4 cursor-pointer capitalize py-2 text-xl">
                             {isLoggedIn ? (
                                 <button onClick={handleLogout} className="text-white">
                                     {translations[language].logout}

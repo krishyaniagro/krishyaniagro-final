@@ -21,14 +21,17 @@ const Products = () => {
     };
 
     const products = [
-        { id: 1, name: { en: 'Real Power ', mr: 'रियल पावर खत', hi: 'रियल पावर उर्वरक' }, MRP: '₹ 998', price: '₹ 650', image: '/images/krushi_f1.jpg', description: { en: 'High-performance fertilizer for healthy plant growth.', mr: 'आरोग्यकर्ता पाऊस उभारण्यासाठी उच्च-क्रियाशील खत.', hi: 'स्वस्थ पौधे के विकास के लिए उच्च प्रदर्शन उर्वरक।' } },
-        { id: 2, name: { en: 'Sticky ', mr: 'स्टिकी खत', hi: 'चिपचिपा उर्वरक' }, MRP: '₹ 450', price: '₹ 230', image: '/images/krushi_f2.jpg', description: { en: 'Adhesive fertilizer that improves nutrient absorption.', mr: 'संपीटनक खत ज्यामध्ये पोषण सोडविण्यासाठी सुधारले जाते.', hi: 'पोषक अवशोषण में सुधार करने वाला चिपचिपा उर्वरक।' } },
-        { id: 3, name: { en: 'Kelper ', mr: 'केपलर खत', hi: 'केपलर उर्वरक' }, MRP: '₹ 1355', price: '₹ 1100', image: '/images/krushi_f3.jpg', description: { en: 'Revolutionary fertilizer with advanced growth formulas.', mr: 'प्रगत विकास सूत्रांसह क्रांतिकारी खत.', hi: 'उन्नत विकास सूत्रों वाला क्रांतिकारी उर्वरक।' } },
-        { id: 4, name: { en: 'Quality Change ', mr: 'क्वालिटी चेंज खत', hi: 'क्वालिटी बदलें उर्वरक' }, MRP: '₹ 1050', price: '₹ 850', image: '/images/krushi_f4.jpg', description: { en: 'Transformative fertilizer for improved soil health.', mr: 'माटीच्या आरोग्यासाठी सुधारित करण्यासाठी परिवर्तक खत.', hi: 'बेहतर मृदा स्वास्थ्य के लिए बदलावपूर्ण उर्वरक।' } },
+        { id: 1, name: { en: 'Real Power ', mr: 'रियल पावर', hi: 'रियल पावर' }, MRP: '₹ 998', price: '₹ 650', image: '/images/krushi_f1.jpg', description: { en: 'High-performance fertilizer for healthy plant growth.', mr: 'आरोग्यकर्ता पाऊस उभारण्यासाठी उच्च-क्रियाशील खत.', hi: 'स्वस्थ पौधे के विकास के लिए उच्च प्रदर्शन उर्वरक।' } },
+        { id: 2, name: { en: 'Sticky ', mr: 'स्टिकी', hi: 'चिपचिपा' }, MRP: '₹ 450', price: '₹ 230', image: '/images/krushi_f2.jpg', description: { en: 'Adhesive fertilizer that improves nutrient absorption.', mr: 'संपीटनक खत ज्यामध्ये पोषण सोडविण्यासाठी सुधारले जाते.', hi: 'पोषक अवशोषण में सुधार करने वाला चिपचिपा उर्वरक।' } },
+        { id: 3, name: { en: 'Kelper ', mr: 'केपलर', hi: 'केपलर' }, MRP: '₹ 1355', price: '₹ 1100', image: '/images/krushi_f3.jpg', description: { en: 'Revolutionary fertilizer with advanced growth formulas.', mr: 'प्रगत विकास सूत्रांसह क्रांतिकारी खत.', hi: 'उन्नत विकास सूत्रों वाला क्रांतिकारी उर्वरक।' } },
+        { id: 4, name: { en: 'Quality Change ', mr: 'क्वालिटी चेंज', hi: 'क्वालिटी बदलें ' }, MRP: '₹ 1050', price: '₹ 850', image: '/images/krushi_f4.jpg', description: { en: 'Transformative fertilizer for improved soil health.', mr: 'मातीच्या आरोग्यासाठी सुधारित करण्यासाठी परिवर्तक खत.', hi: 'बेहतर मृदा स्वास्थ्य के लिए बदलावपूर्ण उर्वरक।' } },
+        // { id: 5, name: { en: 'Seaweed extract ', mr: 'सिवीड अर्क', hi: 'सिवीड अर्क ' }, MRP: '₹ 1050', price: '₹ 850', image: '/images/krushi_f4.jpg', description: { en: 'Helps reduce atmospheric stress and water stress.', mr: 'वातावरणातील ताण व पाण्याचा ताणतणाव कमी करायला मदत करते.', hi: 'वायुमंडलीय तनाव और जल तनाव को कम करने में मदद करता है।' } },
+        { id: 5, name: { en: 'Humic plus ', mr: 'हयुमिक प्लस ', hi: 'हयुमिक प्लस ' }, MRP: '₹ 750', price: '₹ 430', image: '/images/humic.jpg', description: { en: 'Increases the number of white roots', mr: 'पांढऱ्या मुळींची संख्या वाढवते.', hi: 'सफेद जड़ों की संख्या बढ़ जाती है |' } }
+
     ];
 
     return (
-        <main className="container mx-auto pb-10 pt-[250px] lg:pt-[160px]">
+        <main className="container mx-auto p-10 pt-[250px] lg:pt-[160px]">
             <h1 className="text-4xl font-bold mb-8 text-center">{translations[language].title}</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {products?.map(product => (
