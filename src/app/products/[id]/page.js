@@ -248,8 +248,8 @@ const products = [
   {
     id: 5,
     name: { en: 'Quality Change ', mr: 'हयुमिक प्लस ', hi: 'क्वालिटी बदलें ' },
-    price: '₹ 750',
-    MRP: '₹ 430',
+    price: '₹ 430',
+    MRP: '₹ 750',
     image: '/images/humic.jpg',
     usage: {
       en: 'Ideal for improving soil health and enhancing nutrient absorption.',
