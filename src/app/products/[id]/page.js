@@ -247,7 +247,7 @@ const products = [
   // },
   {
     id: 5,
-    name: { en: 'Quality Change ', mr: 'हयुमिक प्लस ', hi: 'क्वालिटी बदलें ' },
+    name: { en: 'Humic plus', mr: 'हयुमिक प्लस ', hi: 'हयुमिक प्लस ' },
     price: '₹ 430',
     MRP: '₹ 750',
     image: '/images/humic.jpg',
