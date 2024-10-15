@@ -33,11 +33,14 @@ export async function generateMetadata() {
   try {
     const page = 'home';
     const res = await fetch(`https://www.krishyaniagro.com/api/metadata/${page}`);
+    const res2 = await fetch(`https://www.krishyaniagro.in/api/metadata/${page}`);
 
     if (!res.ok) {
       throw new Error("Failed to fetch metadata");
     }
     fetchedMetadata = await res.json();
+    fetchedMetadata = await res2.json();
+
   } catch (error) {
     console.error("Error fetching metadata:", error);
 
