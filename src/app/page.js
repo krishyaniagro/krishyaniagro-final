@@ -59,8 +59,8 @@ import Head from "next/head";
 //   };
 // }
 export const metadata = {
-  title: "Krishyani Agro - Home",
-  description: "Welcome to Krishyani Agro, the leading agricultural solutions provider.",
+  title: "Krishi Agro: Leading the Way in Agricultural Excellence",
+  description: "Krishi Agro is dedicated to advancing sustainable farming through innovative solutions, cutting-edge technology, and expert support, empowering farmers to enhance productivity, efficiency, and environmental responsibility in modern agriculture.",
   keywords:"griculture, farming, solutions",
   verification: {
     google: "vvzb4VDojObD5cBKZ56tz36Cu0B7dIDVblkfv2S6COg",
