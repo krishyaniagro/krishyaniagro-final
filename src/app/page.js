@@ -63,10 +63,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta
+        {/* <meta
           name="google-site-verification"
           content="vvzb4VDojObD5cBKZ56tz36Cu0B7dIDVblkfv2S6COg"
-        />
+        /> */}
+        <meta name="google-site-verification" content="_RA13mVxruGAPEapVm3mGeRGVvxtkWXsKv5FC48JK2o" />
       </Head>
       <Hero />
       <Products />
