@@ -57,7 +57,6 @@ export default function RootLayout({ children }) {
           name="google-site-verification"
           content="googleb27fe4a0e9a8aa25"
         />
-        <meta name="google-site-verification" content="_RA13mVxruGAPEapVm3mGeRGVvxtkWXsKv5FC48JK2o" />
       </Head>
       <body className={inter.className}>
         <GlobalStateProvider>
