@@ -62,6 +62,12 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="vvzb4VDojObD5cBKZ56tz36Cu0B7dIDVblkfv2S6COg"
+        />
+      </Head>
       <Hero />
       <Products />
       <FAQSection />
