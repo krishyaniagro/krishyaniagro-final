@@ -63,7 +63,7 @@ export const metadata = {
   description: "Welcome to Krishyani Agro, the leading agricultural solutions provider.",
   keywords:"griculture, farming, solutions",
   verification: {
-    google: "_RA13mVxruGAPEapVm3mGeRGVvxtkWXsKv5FC48JK2o",
+    google: "vvzb4VDojObD5cBKZ56tz36Cu0B7dIDVblkfv2S6COg",
   }
 };
 
