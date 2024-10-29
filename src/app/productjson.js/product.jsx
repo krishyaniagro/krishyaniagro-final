@@ -254,10 +254,10 @@ export const products = [
         "mr": "Meta-Manco",
         "hi": "Meta-Manco"
       },
-      "price": "₹ 400",
+      "price": "₹ 640 ",
       "MRP": "₹ 823",
       "image": "/images/meta-manco.jpg",
-      "Quantity": "640 gm",
+      "Quantity": "400 gm",
       "about": {
         "en": `
           1) Meta-Manco Fungicide is a combi product that can help you protect your crops from fungal diseases. <br />

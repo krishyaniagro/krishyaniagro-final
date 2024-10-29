@@ -12,7 +12,7 @@ export const products = [
         "hi": "मेटा-मनको"
       },
       "MRP": "₹ 823",
-      "price": "₹ 400",
+      "price": "₹ 640",
       "image": "/images/meta-manco.jpg",
       "description": {
         "en": "Meta-Manco Fungicide is a combi product that can help you protect your crops from fungal diseases.",
