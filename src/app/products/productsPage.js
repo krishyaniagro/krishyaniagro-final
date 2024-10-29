@@ -51,7 +51,7 @@ const Products = () => {
       },
       "MRP": "₹ 342",
       "price": "₹ 280",
-      "image": "/images/humic.jpg",
+      "image": "/images/humc.jpg",
       "description": {
         "en": "Hy-Chloro Insecticide is an effective solution for controlling various pests in crops.",
         "mr": "हाय क्लोरो कीटकनाशक पिकांमध्ये विविध किड्यांचा नियंत्रणासाठी प्रभावी उपाय आहे.",

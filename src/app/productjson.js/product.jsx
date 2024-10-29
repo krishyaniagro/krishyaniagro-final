@@ -359,7 +359,7 @@ export const products = [
       },
       "price": "₹ 280",
       "MRP": "₹ 342",
-      "image": "/images/correct.jpg",
+      "image": "/images/corret.jpg",
       "Quantity": "100 ml",
       "about": {
         "en": `
