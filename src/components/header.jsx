@@ -66,8 +66,8 @@ const Navbar = () => {
         { id: 2, key: "about", url: "/about" },
         {
             id: 3, key: "products", url: "/products", sublinks: [
-                { id: 31, key: "Insecticides", url: "/products" },
-                { id: 32, key: "fungicide", url: "/products" },
+                { id: 31, key: "Insecticides", url: "/products/insecticide " },
+                { id: 32, key: "fungicide", url: "/products/fungicide" },
                 { id: 33, key: "PlantGrowthRegulators", url: "/products" },
                 { id: 34, key: "Growthpromoters", url: "/products" },
                 { id: 35, key: "Hardware", url: "/products" },
