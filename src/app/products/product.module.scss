@@ -1,0 +1,26 @@
+.productCard {
+  background-color: #e9f2e9;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  // width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+      display: flex
+;
+    align-items: center;
+}
+
+.productCard:hover {
+  transform: translateY(-5px);
+}
+
+.productImage {
+  width: 100px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.buy_button{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}

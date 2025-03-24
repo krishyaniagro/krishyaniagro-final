@@ -27,6 +27,7 @@ import Products from "./products/page";
 import FAQSection from "@/components/HomeComponents/FAQ";
 import ContactPage from "@/components/HomeComponents/ContactPage";
 import Head from "next/head";
+import TopProducts from "@/components/HomeComponents/topProducts";
 
 // export async function generateMetadata() {
 //   let fetchedMetadata;
@@ -71,7 +72,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Products />
+      <TopProducts />
       <FAQSection />
       <ContactPage />
     </>

@@ -29,7 +29,7 @@ export async function generateMetadata() {
   }
 const ContactUs = () => {
     return (
-        <div className="mt-[30vh] md:mt-[20vh] lg:mt-[10vh] ">
+        <div className="mt-[20%] md:mt-[20vh] lg:mt-[10vh] ">
             <ContactPage />
         </div>
 

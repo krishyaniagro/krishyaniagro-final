@@ -72,7 +72,7 @@ const Products = () => {
     ];
 
     return (
-        <main className="container mx-auto p-10 pt-[250px] lg:pt-[160px]">
+        <main className="container mx-auto p-10 S lg:pt-[160px]">
             <h1 className="text-3xl font-bold mb-6 text-center">{translations[language].title}</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {products?.map(product => (

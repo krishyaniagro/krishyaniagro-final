@@ -5,6 +5,10 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { useLanguage } from "@/app/languagecontext";
 import { useGlobalState } from "./GlobalState";
 import Image from "next/image";
+import style from "../components/header.module.scss"
+import CallIcon from '@mui/icons-material/Call';
+import { usePathname } from 'next/navigation';
+
 
 const translations = {
     en: {
@@ -12,6 +16,9 @@ const translations = {
         about: "About",
         products: "Products",
         contact: "Contact",
+        services:"Services",
+        careers:"Careers",
+        blog:"Blogs",
         login: "Login",
         logout: "Logout",
         Insecticides: "Insecticides",
@@ -25,7 +32,7 @@ const translations = {
     mr: {
         home: "मुख्यपृष्ठ",
         about: "आमच्याबद्दल",
-        products: "उत्पादने",
+        products: "उत्पादने",  
         contact: "संपर्क",
         login: "लॉगिन",
         logout: "लॉगआउट",
@@ -35,10 +42,13 @@ const translations = {
         Growthpromoters: "वाढ प्रोत्साहक",
         Hardware: "हार्डवेअर",
         cinfo:"ऑर्डर करण्यासाठी कॉल करा: +91 9359213421",
-        clanguage:"भाषा बदला"
+        clanguage:"भाषा बदला",
+        services:"सेवा",
+        careers:"करिअर्स",
+        blog:"ब्लॉग्स",
     },
     hi: {
-        home: "मुखपृष्ठ",
+        home: "मुखपृष्ठ", 
         about: "हमारे बारे में",
         products: "उत्पाद",
         contact: "संपर्क करें",
@@ -50,7 +60,10 @@ const translations = {
         Growthpromoters: "वृद्धि प्रमोटर",
         Hardware: "हार्डवेयर",
         cinfo:"ऑर्डर करने के लिए कॉल करें: +91 9359213421",
-        clanguage:"भाषा बदलें"
+        clanguage:"भाषा बदलें",
+        services:"सेवाएँ",
+        careers:"करिअर्स",
+        blog:"ब्लॉग्स",
         
     },
 };
@@ -60,21 +73,33 @@ const Navbar = () => {
     const [hoveredLink, setHoveredLink] = useState(null);
     const { language, setLanguage } = useLanguage();
     const { isLoggedIn, setIsLoggedIn } = useGlobalState();
+    const pathname = usePathname();
+
 
     const links = [
-        { id: 1, key: "home", url: "/" },
-        { id: 2, key: "about", url: "/about" },
-        {
-            id: 3, key: "products", url: "/products", sublinks: [
-                { id: 31, key: "Insecticides", url: "/products/insecticide " },
-                { id: 32, key: "fungicide", url: "/products/fungicide" },
-                { id: 33, key: "PlantGrowthRegulators", url: "/products/regulators" },
-                { id: 34, key: "Growthpromoters", url: "/products" },
-                { id: 35, key: "Hardware", url: "/products" },
-            ]
-        },
-        { id: 4, key: "contact", url: "/pages/contact" },
-    ];
+    { id: 1, key: "home", url: "/" },
+    { id: 2, key: "about", url: "/about" },
+    {
+        id: 3, key: "products", url: "/products"
+        // , sublinks: [
+        //     { id: 31, key: "Insecticides", url: "/products/insecticide" },
+        //     { id: 32, key: "fungicide", url: "/products/fungicide" },
+        //     // { id: 33, key: "PlantGrowthRegulators", url: "/products/regulators" },
+        //     { id: 34, key: "Growthpromoters", url: "/products" },
+        //     // { id: 35, key: "Hardware", url: "/products" },
+        // ]
+    },
+    {
+        id: 4, key: "services", url: "/services"
+        
+    },
+    { id: 5, key: "blog", url: "/blogs" },
+    { id: 6, key: "contact", url: "/pages/contact" },
+    
+    { id: 7, key: "careers", url: "/careers" },
+];
+
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -101,62 +126,18 @@ const Navbar = () => {
 
     return (
         <>
-            {/* <div className="flex justify-between items-center w-full py-2 px-4 text-white fixed top-0 left-0 z-50 bg-[#07bc0c]">
-
-                <div className="flex items-center justify-center flex-grow space-x-4">
-                    Call To Order: +91- 78382 69440
+          
+             <div className="flex flex-wrap justify-between items-center w-full py-2 px-4 text-white fixed top-0 left-0 z-50 bg-[#e9f2e9]">
+                <div className="flex items-center justify-center space-x-4">
+            <CallIcon style={{color:"#d1be2f"}}/>
+             <span className={`${style.cell_number} m-0`}>9359213421</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                    <span className="pr-2"> Change language : </span>
+                    <span className={`${style.choose_language} pr-2 text-[#d1be2f]`}> {translations[language]?.clanguage} : </span>
                     <select
                         value={language}
                         onChange={handleLanguageChange}
-                        className="bg-[#07bc0c] text-white border border-white px-2 py-1rounded"
-                    >
-                        <option value="en">English</option>
-                        <option value="mr">मराठी</option>
-                        <option value="hi">हिंदी</option>
-                    </select>
-                </div>
-            </div>
-            <div className="flex flex-wrap justify-between items-center w-full py-2 px-4 text-white fixed top-10 left-0 z-50 bg-white">
-                <div className="flex flex-grow items-center justify-start space-x-4 pl-4">
-                    <Image src="/images/website_logobg.png" alt="krishyaniagro" width={40} height={40} />
-                    <span className="text-xl sm:text-2xl font-bold ml-2 text-black">Krishyani Agro</span>
-                </div>
-                <div className="w-full md:w-auto flex flex-col md:flex-row items-center mt-2 md:mt-0">
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="text-black border border-black px-4 py-1 rounded-full w-full md:w-64"
-                    />
-                    {isLoggedIn ? (
-                        <button
-                            onClick={handleLogout}
-                            className="pl-8 text-black nav-links cursor-pointer capitalize font-bold hover:scale-105 hover:text-black duration-200 link-underline mt-2 md:mt-0"
-                        >
-                            {translations[language].logout}
-                        </button>
-                    ) : (
-                        <Link
-                            href="/auth/login"
-                            className="text-black nav-links cursor-pointer capitalize font-medium text-white hover:scale-105 hover:text-white duration-200 link-underline mt-2 md:mt-0"
-                        >
-                            {translations[language].login}
-                        </Link>
-                    )}
-                </div>
-            </div> */}
-             <div className="flex flex-wrap justify-between items-center w-full py-2 px-4 text-white fixed top-0 left-0 z-50 bg-[#07bc0c]">
-                <div className="flex flex-grow items-center justify-center space-x-4">
-                {translations[language]?.cinfo}
-                </div>
-                <div className="flex items-center space-x-2">
-                    <span className="pr-2"> {translations[language]?.clanguage} : </span>
-                    <select
-                        value={language}
-                        onChange={handleLanguageChange}
-                        className="bg-[#07bc0c] text-white border border-white px-2 py-1 rounded"
+                        className="bg-[#e9f2e9] text-[#304330] border border-[#304330] px-2 py-1 rounded"
                     >
                         <option value="en">English</option>
                         <option value="mr">मराठी</option>
@@ -168,46 +149,25 @@ const Navbar = () => {
             <div className="flex flex-wrap justify-between items-center w-full py-2 px-4 text-white fixed top-16 lg:top-11 md:top-8 left-0 z-40 bg-white">
                 <div className="flex flex-grow items-center justify-start space-x-4 pl-4">
                     <Image src="/images/website_logobg.png" alt="krishyaniagro" width={40} height={40} />
-                    <span className="text-xl sm:text-2xl font-bold ml-2 text-black">Krishyani Agro</span>
+                    {/* <span className="text-xl sm:text-2xl font-bold ml-2 text-black">Krishyani Agro</span> */}
                 </div>
-                <div className="w-full md:w-auto flex flex-col md:flex-row items-center mt-2 md:mt-0">
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        className="text-black border border-black px-4 py-1 rounded-full w-full md:w-64"
-                    />
-                    {isLoggedIn ? (
-                        <button
-                            onClick={handleLogout}
-                            className="pl-8 text-black nav-links cursor-pointer capitalize font-bold hover:scale-105 hover:text-black duration-200 link-underline mt-2 md:mt-0"
-                        >
-                            {translations[language].logout}
-                        </button>
-                    ) : (
-                        <Link
-                            href="/auth/login"
-                            className="pl-8 text-black nav-links cursor-pointer capitalize font-medium hover:scale-105 hover:text-black duration-200 link-underline mt-2 md:mt-0"
-                        >
-                            {translations[language].login}
-                        </Link>
-                    )}
-                </div>
-            </div>
-
-            <div className="flex justify-between items-center w-full py-2 px-4 text-white fixed top-48 lg:top-24 md:top-24 left-0 bg-[#07bc0c] z-50">
-                <ul className="hidden md:flex flex-grow justify-start gap-14 pl-24">
+               
+                    <ul className="hidden md:flex flex-grow justify-start gap-4 pl-24">
                     {links.map(({ id, key, url, sublinks }) => (
                         <li
                             key={id}
-                            className="relative nav-links px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 hover:text-white duration-200 link-underline"
+                            // className="relative nav-links px-4 cursor-pointer capitalize font-medium text-black hover:scale-105 hover:text-[#304330] duration-200 link-underline"
+                             className={`relative nav-links px-4 cursor-pointer capitalize font-medium 
+  ${pathname === url ? 'text-green-700 border-b-2 border-green-700' : 'text-black'} 
+  hover:scale-105 hover:text-[#304330] duration-200 link-underline`}
                             onMouseEnter={() => setHoveredLink(id)}
                             onMouseLeave={() => setHoveredLink(null)}
                         >
                             <Link href={url}>{translations[language][key]}</Link>
                             {sublinks && hoveredLink === id && (
-                                <ul className="absolute top-full left-0 bg-[#07bc0c] text-white py-2">
+                                <ul className="absolute top-full left-0 bg-[#e9f2e9] text-[#304330] py-2">
                                     {sublinks.map(({ id, key, url }) => (
-                                        <li key={id} className=" p-2 hover:bg-[#033203] w-36 text-sm">
+                                        <li key={id} className=" p-2 hover:bg-[#a9ada9] w-36 text-sm">
                                             <Link href={url}>{translations[language][key]}</Link>
                                         </li>
                                     ))}
@@ -216,14 +176,31 @@ const Navbar = () => {
                         </li>
                     ))}
                 </ul>
+                <div style={{display:"flex", alignItems:"center", justifyContent:"center", gap:"1rem"}}>
+                 {isLoggedIn ? (
+                        <button
+                            onClick={handleLogout}
+                            className={`${style.login_button} pl-8 text-black nav-links cursor-pointer capitalize font-bold hover:scale-105 hover:text-black duration-200 link-underline mt-2 md:mt-0`}
+                        >
+                            {translations[language].logout}
+                        </button>
+                    ) : (
+                        <Link
+                            href="/auth/login"
+                            className={`${style.login_button} pl-8 text-black nav-links cursor-pointer capitalize font-medium hover:scale-105 hover:text-black duration-200 link-underline mt-2 md:mt-0`}
+                        >
+                            {translations[language].login}
+                        </Link>
+                    )}
                 <div
                     onClick={() => setNav(!nav)}
-                    className="cursor-pointer pr-4 z-10 text-white md:hidden"
+                    className="cursor-pointer z-10 text-[#304330] md:hidden"
                 >
                     {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
                 </div>
+                </div>
                 {nav && (
-                    <ul className="flex flex-col py-10 items-start absolute top-0 left-0 w-full h-screen bg-[#07bc0c] text-white">
+                    <ul className="flex flex-col py-10 items-start absolute top-0 left-0 w-full h-screen bg-[#e9f2e9] text-black">
                         {links.map(({ id, key, url, sublinks }) => (
                             <li key={id} className="px-4 cursor-pointer capitalize py-2 text-xl">
                                 <Link onClick={() => setNav(!nav)} href={url}>
@@ -244,18 +221,22 @@ const Navbar = () => {
                         ))}
                         <li className="px-4 cursor-pointer capitalize py-2 text-xl">
                             {isLoggedIn ? (
-                                <button onClick={handleLogout} className="text-white">
+                                <button onClick={handleLogout} className={`${style.login_button} text-white`}>
                                     {translations[language].logout}
                                 </button>
                             ) : (
-                                <Link onClick={() => setNav(!nav)} href="/auth/login">
+                                <Link onClick={() => setNav(!nav)} href="/auth/login" className={`${style.login_button}`}>
                                     {translations[language].login}
                                 </Link>
                             )}
                         </li>
                     </ul>
                 )}
-            </div>
+                   
+                </div>
+            {/* </div> */}
+
+            
         </>
 
     );

@@ -1,0 +1,70 @@
+.service_1{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.img1{
+    width: 400px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.number_one{
+     font-family: "Triodion", serif;
+  font-weight: 400;
+  font-size: 3rem;
+  font-style: normal;
+  color: #4acc1c;
+}
+
+.service_name_1{
+    font-family: "Triodion", serif;
+  font-weight: 400;
+  font-size: 3rem;
+}
+.serviceCard {
+  padding: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap:1rem;
+
+  &:hover {
+    transform: translateY(-8px);
+  }
+}
+
+
+/* ✅ Mobile responsiveness (for screens smaller than 600px) */
+@media (max-width: 768px) {
+    .service_1 {
+        flex-direction: column; /* Stack elements only for smaller screens */
+        text-align: center; /* Center align text */
+        gap: 10px;
+    }
+
+    .img1 {
+        max-width: 100%; /* Full width on small screens */
+        height: auto;
+    }
+
+    .number_one,
+    .service_name_1 {
+        font-size: 2rem; /* Reduce font size for readability */
+    }
+}
+
+/* ✅ Very small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .number_one,
+    .service_name_1 {
+        font-size: 1.8rem;
+    }
+
+    .service_1 {
+        gap: 5px;
+    }
+}
