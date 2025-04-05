@@ -232,7 +232,7 @@ const Product = ({ params }) => {
           />
           <div className="flex flex-col p-4">
         <h3 className="text-lg font-bold mb-2">{item.name[language]}</h3>
-        <p className="text-sm text-gray-600">{usage[language]}</p>
+        <p className="text-sm text-gray-600">{item.usage[language]}</p>
         <div className="flex gap-3 mt-4">
           <div className="flex items-center gap-2 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">
             Fastest Delivery

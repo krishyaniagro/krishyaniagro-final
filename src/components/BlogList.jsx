@@ -2,33 +2,23 @@
 
 import React, { useState } from 'react';
 import BlogItem from './BlogItem';
+import { useLanguage } from '@/app/languagecontext';
 
 const BlogList = () => {
   const [menu, setMenu] = useState('All');
-
+  const { language } = useLanguage();
   // Static JSON data
   const blogs = [
     {
       id: '1',
-      image: '/images/services/agri_hero.jpg',
-      title: 'Tech Innovations 2025',
-      description: 'A glimpse into upcoming technological advancements.',
+      image: '/blogs/blog1_home.jpg',
+      title: {
+      en: 'Modern Agricultural Technologies: A Path to Higher Productivity and Profitability',
+      hi: 'आधुनिक कृषि तकनीक: उच्च उत्पादकता और लाभप्रदता का मार्ग',
+      mr: 'आधुनिक शेती तंत्रज्ञान: अधिक उत्पादकता आणि नफ्याचा मार्ग'
+    },
       category: 'Technology',
-    },
-    {
-      id: '2',
-      image: '/images/services/agri_hero.jpg',
-      title: 'How to Build a Startup',
-      description: 'Tips and strategies for launching your own startup.',
-      category: 'Startup',
-    },
-    {
-      id: '3',
-      image: '/images/services/agri_hero.jpg',
-      title: 'Healthy Living',
-      description: 'Ways to maintain a balanced and healthy lifestyle.',
-      category: 'Lifestyle',
-    },
+    }
   ];
 
   return (
@@ -41,9 +31,9 @@ const BlogList = () => {
       <div style={{fontSize:"26px",color:"grey"}}>Simple Stories on Farming and Agriculture</div>
       </div>
      
-      <div className='flex flex-wrap justify-around gap-1 gap-y-10 mb-16'>
+      <div className='flex flex-wrap gap-1 gap-y-10 mb-16'>
         {blogs.filter((item) => menu === 'All' ? true : item.category === menu).map((item, index) => {
-          return <BlogItem key={index} id={item.id} image={item.image} title={item.title} description={item.description} category={item.category} />
+          return <BlogItem key={index} id={item.id} image={item.image} title={item.title?.[language]}  category={item.category} />
         })}
       </div>
         </div>

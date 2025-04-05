@@ -158,10 +158,9 @@ const Page = () => {
                 {/* Breadcrumb */}
              
 
-                <div className='text-center my-24 relative flex flex-col items-center justify-center' 
+                <div className='text-center my-24 mt-0 relative flex flex-col items-center justify-center' 
                      style={{
-        position: 'relative', // Needed for absolute positioning
-        padding: '100px 20px',
+        position: 'relative', 
         borderRadius: '10px',
         overflow: 'hidden'
     }}>
@@ -176,7 +175,7 @@ const Page = () => {
         }}
     ></div> */}
     <div>
-    <div><img src={data.bgImage}></img></div>
+    <div className='flex justify-center'><img src={data.bgImage} className="w-full sm:w-auto sm:p-0 pt-[30%] pb-[10%]"></img></div>
                     {/* <h1 className='text-2xl sm:text-5xl font-semibold '>
                         {data.title?.[language]}
                     </h1> */}

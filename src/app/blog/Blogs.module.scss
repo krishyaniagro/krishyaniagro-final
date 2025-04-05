@@ -1,0 +1,24 @@
+.readMoreButton {
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  text-transform: none;
+  transition: background-color 0.3s;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  width: 34%;
+}
+
+.blogItemContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+@media (max-width: 768px) { 
+  .readMoreButton {
+    width: 60%; /* Adjust width for mobile screens */
+  }
+}
