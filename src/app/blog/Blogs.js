@@ -1,13 +1,4 @@
-// import React from 'react'
 
-// function Blogs() {
-//   return (
-//     <div className='relative top-12 p-16'>
-//     </div>
-//   )
-// }
-
-// export default Blogs
 
 import React from "react";
 import Link from "next/link";

@@ -1,0 +1,17 @@
+.sliderWrapper {
+  margin-top: 40px;
+  padding: 0 20px;
+
+  .slick-slide > div {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sliderImage {
+    width: 100%;       // or set to fixed width like 800px
+    max-width: 1000px; // optional max width
+    height: 400px;     // 👈 set your desired height
+    object-fit: cover;
+    border-radius: 12px;
+  }
+}

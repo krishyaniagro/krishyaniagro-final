@@ -24,10 +24,12 @@ const translations = {
         Insecticides: "Insecticides",
         fungicide: "Fungicide",
         PlantGrowthRegulators: "Plant Growth Regulators",
+        Micronutrients: "Micronutrients",
         Growthpromoters: "Growth Promoters",
         Hardware: "Hardware",
         cinfo:"Call To Order: +91 9359213421",
-        clanguage:"Change language"
+        clanguage:"Change language",
+        allProducts:"All Products",
     },
     mr: {
         home: "मुख्यपृष्ठ",
@@ -36,6 +38,7 @@ const translations = {
         contact: "संपर्क",
         login: "लॉगिन",
         logout: "लॉगआउट",
+        Micronutrients: "सूक्ष्म पोषक",
         Insecticides: "कीटकनाशके",
         fungicide: "कवकनाशके",
         PlantGrowthRegulators: "वनस्पती वाढ नियामक",
@@ -46,6 +49,7 @@ const translations = {
         services:"सेवा",
         careers:"करिअर्स",
         blog:"ब्लॉग्स",
+        allProducts:"सर्व उत्पादने",
     },
     hi: {
         home: "मुखपृष्ठ", 
@@ -55,6 +59,7 @@ const translations = {
         login: "लॉगिन",
         logout: "लॉगआउट",
         Insecticides: "कीटनाशक",
+        Micronutrients: "सूक्ष्म पोषक तत्व",
         fungicide: "फफूंदनाशक",
         PlantGrowthRegulators: "पौधों की वृद्धि नियामक",
         Growthpromoters: "वृद्धि प्रमोटर",
@@ -64,6 +69,7 @@ const translations = {
         services:"सेवाएँ",
         careers:"करिअर्स",
         blog:"ब्लॉग्स",
+        allProducts:"सभी उत्पाद",
         
     },
 };
@@ -81,13 +87,13 @@ const Navbar = () => {
     { id: 2, key: "about", url: "/about" },
     {
         id: 3, key: "products", url: "/products"
-        // , sublinks: [
-        //     { id: 31, key: "Insecticides", url: "/products/insecticide" },
-        //     { id: 32, key: "fungicide", url: "/products/fungicide" },
-        //     // { id: 33, key: "PlantGrowthRegulators", url: "/products/regulators" },
-        //     { id: 34, key: "Growthpromoters", url: "/products" },
-        //     // { id: 35, key: "Hardware", url: "/products" },
-        // ]
+        , sublinks: [
+            // { id: 31, key: "Insecticides", url: "/products/insecticide" },
+            { id: 32, key: "allProducts", url: "/products" },
+            { id: 33, key: "PlantGrowthRegulators", url: "/products/regulators" },
+            { id: 34, key: "Micronutrients", url: "/products/micronutrients" },
+            // { id: 35, key: "Micronutrients", url: "/products" },
+        ]
     },
     {
         id: 4, key: "services", url: "/services"
@@ -129,11 +135,11 @@ const Navbar = () => {
           
              <div className="flex flex-wrap justify-between items-center w-full py-2 px-4 text-white fixed top-0 left-0 z-50 bg-[#e9f2e9]">
                 <div className="flex items-center justify-center space-x-4">
-            <CallIcon style={{color:"#d1be2f"}}/>
+            <CallIcon style={{color:"#304330"}}/>
              <span className={`${style.cell_number} m-0`}>9359213421</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                    <span className={`${style.choose_language} pr-2 text-[#d1be2f]`}> {translations[language]?.clanguage} : </span>
+                    <span className={`${style.choose_language} pr-2 text-[#304330]`}> {translations[language]?.clanguage} : </span>
                     <select
                         value={language}
                         onChange={handleLanguageChange}
@@ -146,7 +152,8 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="flex flex-wrap justify-between items-center w-full py-2 px-4 text-white fixed top-16 lg:top-11 md:top-8 left-0 z-40 bg-white">
+            <div className="flex flex-wrap justify-between items-center w-full py-2 px-4 text-white fixed lg:top-11 md:top-8 left-0 z-40 bg-white sm:top-12 [@media(max-width:425px)]:top-[4rem] [@media(min-width:426px)]:top-[3rem] 
+             [@media(min-width:667px)]:top-[3rem]" >
                 <div className="flex flex-grow items-center justify-start space-x-4 pl-4">
                     <Image src="/images/website_logobg.png" alt="krishyaniagro" width={40} height={40} />
                     {/* <span className="text-xl sm:text-2xl font-bold ml-2 text-black">Krishyani Agro</span> */}
@@ -177,21 +184,7 @@ const Navbar = () => {
                     ))}
                 </ul>
                 <div style={{display:"flex", alignItems:"center", justifyContent:"center", gap:"1rem"}}>
-                 {isLoggedIn ? (
-                        <button
-                            onClick={handleLogout}
-                            className={`${style.login_button} pl-8 text-black nav-links cursor-pointer capitalize font-bold hover:scale-105 hover:text-black duration-200 link-underline mt-2 md:mt-0`}
-                        >
-                            {translations[language].logout}
-                        </button>
-                    ) : (
-                        <Link
-                            href="/auth/login"
-                            className={`${style.login_button} pl-8 text-black nav-links cursor-pointer capitalize font-medium hover:scale-105 hover:text-black duration-200 link-underline mt-2 md:mt-0`}
-                        >
-                            {translations[language].login}
-                        </Link>
-                    )}
+                
                 <div
                     onClick={() => setNav(!nav)}
                     className="cursor-pointer z-10 text-[#304330] md:hidden"
@@ -219,17 +212,6 @@ const Navbar = () => {
                                 )}
                             </li>
                         ))}
-                        <li className="px-4 cursor-pointer capitalize py-2 text-xl">
-                            {isLoggedIn ? (
-                                <button onClick={handleLogout} className={`${style.login_button} text-white`}>
-                                    {translations[language].logout}
-                                </button>
-                            ) : (
-                                <Link onClick={() => setNav(!nav)} href="/auth/login" className={`${style.login_button}`}>
-                                    {translations[language].login}
-                                </Link>
-                            )}
-                        </li>
                     </ul>
                 )}
                    

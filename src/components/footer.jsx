@@ -5,6 +5,7 @@
 import Link from "next/link";
 import { useLanguage } from "@/app/languagecontext";
 import styles from "./footer.module.scss";
+import { products } from "@/app/productjson.js/product";
 
 export default function Footer() {
   const { language } = useLanguage();
@@ -15,12 +16,15 @@ export default function Footer() {
       about: "About",
       services: "Services",
       contact: "Contact",
+      careers: "Careers",
+      products:"Products",
       followUs: "Follow Us",
       contactUs: "Contact Us",
+      blogs:"Blogs",
       email: "Email",
       phone: "Phone",
       address: "Address:",
-      add:"Third Floor, SAI SANSKRUTI BAIF, Pune Nagar Road Wagheshwar Mandir Wagholi, Pune, Pincode 412207",
+      add:"Office No 308, Sai Sanskruti Comercial Complex, Baif Rd, near Parvatibai Genba Moze College Of Engineering, Wagholi, Pune, Maharashtra 412207",
       companyInfo: "Empowering farmers with technology and providing fresh produce to everyone.",
       pages: "Pages",
       copyright: "&copy; 2025 Krishyaniagro. All rights reserved.",
@@ -35,12 +39,16 @@ export default function Footer() {
       about: "आमच्याबद्दल",
       services: "सेवा",
       contact: "संपर्क",
+      careers: "करिअर",
+      products:"उत्पादने",
+      blogs:"ब्लॉग",
+      careers:"करिअर",
       followUs: "आमचं अनुसरण करा",
       contactUs: "आमच्याशी संपर्क साधा",
       email: "ईमेल",
       phone: "फोन",
       address: "पत्ता: ",
-      add:"तिसरा मजला, साई संस्कृती बाइफ, पुणे नगर रोड वाघेश्वर मंदिर, वाघोली, पुणे, पिनकोड 412207",
+      add:"ऑफिस क्रमांक ३०८, साई संस्कृती कमर्शियल कॉम्प्लेक्स, बाफ रोड, परवतीबाई जेंबा मोझे कॉलेज ऑफ इंजिनिअरिंगजवळ, वाघोली, पुणे, महाराष्ट्र 412207",
       companyInfo: "तंत्रज्ञानासह शेतकऱ्यांना सक्षम बनवणे आणि सर्वांना ताजे उत्पादन प्रदान करणे.",
       pages: "पृष्ठे",
       copyright: "&copy; 2025 Krishyaniagro. सर्व हक्क राखीव आहेत.",
@@ -54,12 +62,15 @@ export default function Footer() {
       about: "हमारे बारे में",
       services: "सेवाएं",
       contact: "संपर्क करें",
+      products:"उत्पाद",
+      careers :"करियर",
+      blogs:"ब्लॉग",
       followUs: "हमें फॉलो करें",
       contactUs: "संपर्क करें",
       email: "ईमेल",
       phone: "फ़ोन",
       address: "पता: ",
-      add:"तीसरी मंजिल, साई संस्कृति बाइफ, पुणे नगर रोड वाघेश्वर मंदिर, वाघोली, पुणे, पिनकोड 412207",
+      add:"ऑफिस नंबर 308, साई संस्कृती कमर्शियल कॉम्प्लेक्स, बाफ रोड, परवतीबाई जेनबा मोझे कॉलेज ऑफ इंजीनियरिंग के पास, वाघोली, पुणे, महाराष्ट्र 412207",
       companyInfo: "किसानों को प्रौद्योगिकी के साथ सशक्त बनाना और सभी को ताजा उत्पाद प्रदान करना।",
       pages: "पृष्ठ",
       copyright: "&copy; 2025 Krishyaniagro. सर्वाधिकार सुरक्षित।",
@@ -97,13 +108,28 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/products">
+                  <p className="hover:underline underline underline-offset-5 text-[#304330]">{translations[language].products}</p>
+                </Link>
+              </li>
+              <li>
                 <Link href="/services">
                   <p className="hover:underline underline underline-offset-5 text-[#304330]">{translations[language].services}</p>
                 </Link>
               </li>
               <li>
+                <Link href="/blogs">
+                  <p className="hover:underline underline underline-offset-5 text-[#304330]">{translations[language].blogs}</p>
+                </Link>
+              </li>
+              <li>
                 <Link href="/pages/contact">
                   <p className="hover:underline underline underline-offset-5 text-[#304330]">{translations[language].contact}</p>
+                </Link>
+              </li>
+              <li>
+                <Link href="/careers">
+                  <p className="hover:underline underline underline-offset-5 text-[#304330]">{translations[language].careers}</p>
                 </Link>
               </li>
             </ul>

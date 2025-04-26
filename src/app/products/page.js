@@ -15,7 +15,7 @@ export async function generateMetadata() {
       console.error("Error fetching metadata:", error);
   
       fetchedMetadata = {
-        title: "Fallback Title",
+        title: "Krishyani Agro / Products",
         description: "Fallback description",
         keywords: "fallback, keywords",
       };
